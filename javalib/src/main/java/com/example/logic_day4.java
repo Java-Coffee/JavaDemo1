@@ -8,6 +8,7 @@ public class logic_day4 {
         System.out.println("插入排序"+Arrays.toString(insertSort(input)));
 
     }
+    //test
 
 //选择排序
     public static int[] xuanze(int[] s){
