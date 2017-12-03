@@ -6,6 +6,8 @@ public class logic_day4 {
         System.out.println("选择排序"+Arrays.toString(xuanze(input)));
         System.out.println("冒泡排序"+Arrays.toString(maopao(input)));
         System.out.println("插入排序"+Arrays.toString(insertSort(input)));
+        System.out.println("快速排序"+Arrays.toString(kuaisusort(input,0,input.length-1)));
+
 
     }
     //test
@@ -56,5 +58,32 @@ public class logic_day4 {
             s[index] = temp;
         }
         return s;
+    }
+
+    public static int partition(int []array,int lo,int hi){
+        //固定的切分方式
+        int key=array[lo];
+        while(lo<hi){
+            while(array[hi]>=key&&hi>lo){//从后半部分向前扫描
+                hi--;
+            }
+            array[lo]=array[hi];
+            while(array[lo]<=key&&hi>lo){//从前半部分向后扫描
+                lo++;
+            }
+            array[hi]=array[lo];
+        }
+        array[hi]=key;
+        return hi;
+    }
+
+    public static int[] kuaisusort(int[] array,int lo ,int hi){
+        if(lo>=hi){
+            return array;
+        }
+        int index=partition(array,lo,hi);
+        kuaisusort(array,lo,index-1);
+        kuaisusort(array,index+1,hi);
+        return array;
     }
 }
