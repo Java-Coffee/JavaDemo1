@@ -7,6 +7,7 @@ public class logic_day4 {
         System.out.println("冒泡排序"+Arrays.toString(maopao(input)));
         System.out.println("插入排序"+Arrays.toString(insertSort(input)));
         System.out.println("快速排序"+Arrays.toString(kuaisusort(input,0,input.length-1)));
+        System.out.println("希尔排序"+Arrays.toString(shellSort(input)));
 
 
     }
@@ -85,5 +86,31 @@ public class logic_day4 {
         kuaisusort(array,lo,index-1);
         kuaisusort(array,index+1,hi);
         return array;
+    }
+
+    public static int[] shellSort(int[] s){
+        int len = s.length;
+        if(len < 2){
+            return s;
+        }
+        int index =0;
+        for(index = len/2;index >1;index/=2){
+            for(int i= len-index-1;i<len;i++){
+                for(int j=i-index;j>0;j-=index){
+                    if(s[j]>s[j+index]){
+                        swap(s,j,j+index);
+                    }
+                }
+            }
+        }
+
+        return s;
+    }
+
+    private static void swap(int[] s, int a, int b) {
+        int temp = 0;
+        temp = s[a];
+        s[a] = s[b];
+        s[b] = temp;
     }
 }
