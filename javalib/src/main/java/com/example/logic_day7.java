@@ -23,6 +23,19 @@ public class logic_day7 {
         String s= "()()()()(()((()()))())";
         int depth = getStringDepth(s);
         System.out.println("depth = "+depth);
+        System.out.println("递归斐波那契数列第30位 = "+RFibonacci(30));
+        System.out.println("非递归斐波那契数列第30位 = "+Fibonacci(30));
+    }
+
+    private static int RFibonacci(int i) {
+        if(i == 0){
+            return 0;
+        }else if(i == 1){
+            return 1;
+        }else {
+            return RFibonacci(i-1)+RFibonacci(i-2);
+        }
+
     }
 
     private static int getStringDepth(String s) {
@@ -39,5 +52,22 @@ public class logic_day7 {
 
         }
         return max;
+    }
+
+    //非递归求斐波那契数列
+    public static int Fibonacci(int n) {
+        int a=1,b=1,c=0;
+        if(n==0){
+            return 0;
+        }else if(n == 1||n==2){
+            return 1;
+        }else{
+            for(int i =3;i<=n;i++){
+                c = a+b;
+                a = b;
+                b = c;
+            }
+            return c;
+        }
     }
 }
