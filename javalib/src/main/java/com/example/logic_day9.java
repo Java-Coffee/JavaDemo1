@@ -4,7 +4,7 @@
 public class logic_day9 {
     public static void main(String[] args) {
         StringBuffer input = new StringBuffer("a bb cdf g");
-        replaceSpace(input);
+        System.out.println("input = "+replaceSpace(input));
     }
     public static String replaceSpace(StringBuffer str) {
         if(str==null){
